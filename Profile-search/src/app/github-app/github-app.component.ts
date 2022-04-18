@@ -9,6 +9,8 @@ export class GithubAppComponent implements OnInit {
   public githubUserQuery!: string;
   public githubProfile:any;
   public githubRepos!: any[];
+  public errorMessage!: string;
+  
 
   constructor() { }
 
