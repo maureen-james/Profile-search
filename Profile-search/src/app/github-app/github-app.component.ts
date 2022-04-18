@@ -1,4 +1,6 @@
+import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
+import { GithubServiceService } from '../github-service.service';
 
 @Component({
   selector: 'app-github-app',
@@ -12,9 +14,16 @@ export class GithubAppComponent implements OnInit {
   public errorMessage!: string;
   
 
-  constructor() { }
+  constructor(private githubService:GithubServiceService) { }
 
   public searchUser(){
+    this.githubService.getProfile(this.githubUserQuery).subscribe(next(data) =>{
+      this.githubProfile=data,
+    }, error(error) => {
+      this.errorMessage = error
+
+    });
+     
 
   }
 
